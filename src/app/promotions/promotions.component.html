@@ -1,0 +1,11 @@
+<h2>Promotions</h2>
+<ul class="promotions">
+  <li *ngFor="let promotion of promotions" (click)="onSelect(promotion)" [class.selected]="promotion === selectedPromotion">
+    {{promotion.Description}}
+  </li>
+</ul>
+<div class="promotions-controls">
+  <button (click)="newPromotion()">add promotion</button>
+</div>
+
+<app-promotion-detail [promotion]="selectedPromotion"></app-promotion-detail>

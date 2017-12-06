@@ -1,0 +1,61 @@
+<div class="promotion-detail" *ngIf="promotion">
+  <h3>Details for {{promotion.PromotionID}}</h3>
+  <form [formGroup]="promoForm" (ngSubmit)="save(promoForm.value)">
+
+    <label>internal description: 
+      <input formControlName="Description" placeholder="internal description">
+    </label>
+    <div *ngIf="!promoForm.controls['Description'].valid && promoForm.controls['Description'].touched">invalid</div>
+
+    <label>web description: 
+      <input formControlName="WebDescription" placeholder="text displayed on the website">
+    </label>
+    <div *ngIf="!promoForm.controls['WebDescription'].valid && promoForm.controls['WebDescription'].touched">invalid</div>
+
+    <label>type:
+      <select formControlName="Type">
+        <option *ngFor="let type of promotionTypes" [value]="type.value">{{type.name}}</option>
+      </select>
+    </label>
+    <div *ngIf="!promoForm.controls['Type'].valid && promoForm.controls['Type'].touched">invalid</div>
+
+    <label>current count:
+        <input formControlName="CurrentCount">
+    </label>
+    <div *ngIf="!promoForm.controls['CurrentCount'].valid && promoForm.controls['CurrentCount'].touched">invalid</div>
+
+    <label>max count:
+        <input formControlName="MaxCount">
+    </label>
+    <div *ngIf="!promoForm.controls['MaxCount'].valid && promoForm.controls['MaxCount'].touched">invalid</div>
+
+    <label>start date:
+        <input formControlName="DateStart">
+    </label>
+    <div *ngIf="!promoForm.controls['DateStart'].valid && promoForm.controls['DateStart'].touched">invalid</div>
+
+    <label>expiration date:
+        <input formControlName="DateEnd">
+    </label>
+    <div *ngIf="!promoForm.controls['DateEnd'].valid && promoForm.controls['DateEnd'].touched">invalid</div>
+
+    <label>enabled:
+        <input type="checkbox" formControlName="Enabled">
+    </label>
+    <div *ngIf="!promoForm.controls['Enabled'].valid && promoForm.controls['Enabled'].touched">invalid</div>
+
+    <label>display name:
+        <input formControlName="DisplayName">
+    </label>
+    <div *ngIf="!promoForm.controls['DisplayName'].valid && promoForm.controls['DisplayName'].touched">invalid</div>
+
+    <label>category:
+        <input formControlName="Category">
+    </label>
+    <div *ngIf="!promoForm.controls['Category'].valid && promoForm.controls['Category'].touched">invalid</div>
+
+    <div class="promotion-detail-controls">
+      <button type="submit" [disabled]="!promoForm.valid">save</button>
+    </div>
+  </form>
+</div>
